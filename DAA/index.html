@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Path Finder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <div>
+                <p class="eyebrow">Graph Algorithms + D3.js</p>
+                <h1>Longest Path Finder</h1>
+                <p class="hero-copy">
+                    Select a source and destination city, search for the longest simple route, and
+                    watch the traversal animate across the graph.
+                </p>
+            </div>
+            <div class="hero-chip">Animated longest-path traversal</div>
+        </header>
+
+        <main class="layout">
+            <section class="panel controls-panel">
+                <div class="panel-heading">
+                    <h2>Route Search</h2>
+                    <p>Find the longest route without repeating any city.</p>
+                </div>
+
+                <div class="control-group">
+                    <label for="source-city">Source City</label>
+                    <select id="source-city"></select>
+                </div>
+
+                <div class="control-group">
+                    <label for="destination-city">Destination City</label>
+                    <select id="destination-city"></select>
+                </div>
+
+                <button id="find-path-button" class="primary-button">Find Longest Path</button>
+
+                <div class="result-card">
+                    <p class="result-label">Longest Path</p>
+                    <p id="path-output" class="result-value">-</p>
+                    <p class="result-label">Total Distance</p>
+                    <p id="distance-output" class="result-value mono">-</p>
+                    <p id="status-output" class="status-message">Choose two cities to begin.</p>
+                </div>
+
+                <div class="panel-heading add-spacing">
+                    <h2>Expand Graph</h2>
+                    <p>Add a city and connect it to the current network.</p>
+                </div>
+
+                <div class="control-group">
+                    <label for="new-city-name">New City Name</label>
+                    <input id="new-city-name" type="text" placeholder="e.g. Chennai">
+                </div>
+
+                <div class="control-group">
+                    <label for="connect-city">Connect To</label>
+                    <select id="connect-city"></select>
+                </div>
+
+                <div class="control-group">
+                    <label for="new-city-distance">Distance (km)</label>
+                    <input id="new-city-distance" type="number" min="1" step="1" placeholder="Distance">
+                </div>
+
+                <button id="add-city-button" class="secondary-button">Add City</button>
+            </section>
+
+            <section class="panel graph-panel">
+                <div class="panel-heading graph-heading">
+                    <div>
+                        <h2>Interactive Graph</h2>
+                        <p>Gray edges show all routes. The orange trail is the animated longest simple path.</p>
+                    </div>
+                    <div class="legend">
+                        <span><i class="legend-dot default-dot"></i> City</span>
+                        <span><i class="legend-dot active-dot"></i> On longest path</span>
+                    </div>
+                </div>
+                <div id="graph-container" class="graph-container"></div>
+            </section>
+
+            <section class="panel routes-panel">
+                <div class="panel-heading">
+                    <h2>Available Routes</h2>
+                    <p>Current adjacency list representation of the graph.</p>
+                </div>
+                <div id="routes-list" class="routes-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
